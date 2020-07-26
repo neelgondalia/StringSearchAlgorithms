@@ -1,0 +1,110 @@
+/*
+* Neel Gondalia
+* README
+*/
+
+===============================
+	Assumptions/Limitations
+===============================
+
+- String seach is performed in data.txt file. In order to search a different text, modify the data.txt file
+- There can be multiple matches of a pattern on a single line 
+- Intended to display the ability to implement algorithms. Therefore, not a strong emphasis on user interface.
+
+===============================
+    Compiling and Running
+===============================
+
+*** Type 'make' to compile all questions
+*** Type 'make del' to remove all executibles from the bin folder
+
+-> To run string search bruteforce algorithm, type: bin/stringsearch_bruteforce
+
+-> To run string search horspool algorithm, type: bin/stringsearch_horspool
+
+-> To run string search boyer moore algorithm, type: bin/stringsearch_boyermoore
+
+
+===========================================
+  Analysis of 	String Search Algorithms
+===========================================
+
+Ratio = Pattern Shifts / Running Time
+Ratio units = shifts per milliseconds
+
+*program gives you a performance ratio for each search you do
+*table filled using values obtained from the programs
+*note that the hardware you use impacts the running time of the prorgram, therefore affecting the performance ratios
+
+_______________________________________________________________________________________________________________
+					|					 	  |					  		| 				   		  |			   |	 
+Test case   		|    Brute Force ratios	  |      Horspool ratios	|    Boyer-Moore ratios   |  #Occur    |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+University of Guelph| 		3097.73			  | 		2280.11	        | 			2583.14		  |    1253    |
+____________________|_________________________|_________________________|_________________________|____________|
+					  |					 	  |					  		|					      |            |
+Undergraduate Calendar| 		3276.95       | 		2362.05	    	| 			2423.99		  |    12 	   |
+______________________|_______________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+SummerSemester		| 		4142.20			  | 		3843.48			| 			3831.43		  |    3 	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+Semester 2016		| 		4654.61		      | 		4157.75		    | 			3373.17		  |    21	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+development			| 		5627.84			  | 		4476.21			| 			4439.63		  |    62 	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+824-4120			| 		7112.48			  | 		7960.69		    | 			7086.88		  |    13 	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+TOEFL				| 		12787.37		  | 		12337.52	    | 			9580.73		  |    2 	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+also				| 		15220.33		  | 		11229.00	    |   		9087.50		  |    168 	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+the					| 		18676.56		  | 		7689.60		    | 			10421.94	  |    28338   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+is					| 		25148.47		  | 		17960.54	    | 			12983.26	  |    18300   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+a					| 		34115.55		  | 		20802.82	    | 			15020.30	  |    212358  |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+abcbab				| 		8778.48			  | 		8428.27		    | 			7679.82		  |    0 	   |
+____________________|_________________________|_________________________|_________________________|____________|
+					|					 	  |					  		|					      |            |
+AVERAGE RATIO		| 	    11886.55		  | 		8627.34		    | 			7375.98		  |     	   |
+____________________|_________________________|_________________________|_________________________|____________|
+
+	========
+	 shifts
+	========
+	--> Horspool has either the same shifts as Boyer Moore or more. As reoccuring patterns in Boyer Moore increase, the shifts for boyer moore decreases.
+	--> Brute force is always the max amount of shifts, as it moves by one each time. The max amount of shits is (array size* (string length of each line - string length of pattern)).
+
+	========
+	 Ratios
+	========
+	--> The ratio for brute force is the highest because it is doing smaller shifts (one shift at a time) so it can do more shifts per second.
+	--> The ratio for horspool and Boyer-Moore are pretty similar compared to brute force. But the ratio for boyer moore is less shifts per second, becuase the number of patterns usually stays the same as Horspool
+		but execution time for boyer moore is usually slower (due to the case where only 1 shift occurs) as words get smaller, giving it a smaller ratio than horspool.
+
+	===============================
+	Size of Pattern Entered by user
+	===============================
+	--> As the pattern gets bigger, brute force takes a longer time to execute and the amount of shifts decrease by that size of the word
+	--> As the pattern gets bigger, the run times for horspool and boyer-moore remain relatively close but shifts for boyer moore is less than horspool for some cases. Boyer moore is more effiecent for large
+		pattern sizes
+
+	===========
+	Efficiency
+	===========
+	let n be the size of pattern
+	--> Brute force is more efficient when n=1 as all algorithms will require same amount of pattern shifts because you can only shift by one. But the other two methods require more space and time due to the tables
+		that need to be created.
+	--> Horspool and Boyer-Moore become more efficient for n>1 and boyer moore becomes more effective as n gets really large due to the chances of getting reoccuring patterns gettingbigger
+	 
